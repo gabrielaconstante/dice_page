@@ -25,12 +25,14 @@ class _DicePageState extends State<DicePage> {
   var leftDiceNumber = 1;
   var rightDiceNumber = 1;
 
+  int genRandomNumber() {
+    return Random().nextInt(6) + 1;
+  }
+
   void roolDice() {
     setState(() {
-      var randomValueLeft = Random().nextInt(6) + 1;
-      var randomValueRight = Random().nextInt(6) + 1;
-      leftDiceNumber = randomValueLeft;
-      rightDiceNumber = randomValueRight;
+      leftDiceNumber = genRandomNumber();
+      rightDiceNumber = genRandomNumber();
     });
   }
 
@@ -41,15 +43,6 @@ class _DicePageState extends State<DicePage> {
         children: [
           Expanded(
             child: TextButton(
-                // onPressed: () {
-                //   setState(() {
-                //     var randomValueLeft = Random().nextInt(6) + 1;
-                //     var randomValueRight = Random().nextInt(6) + 1;
-                //     leftDiceNumber = randomValueLeft;
-                //     rightDiceNumber = randomValueRight;
-                //   });
-
-                // },
                 onPressed: roolDice,
                 style:
                     TextButton.styleFrom(padding: const EdgeInsets.all(16.0)),
@@ -59,14 +52,7 @@ class _DicePageState extends State<DicePage> {
           ),
           Expanded(
             child: TextButton(
-                onPressed: () {
-                  setState(() {
-                    var randomValueLeft = Random().nextInt(6) + 1;
-                    var randomValueRight = Random().nextInt(6) + 1;
-                    leftDiceNumber = randomValueLeft;
-                    rightDiceNumber = randomValueRight;
-                  });
-                },
+                onPressed: roolDice,
                 style:
                     TextButton.styleFrom(padding: const EdgeInsets.all(16.0)),
                 child: Image.asset(
